@@ -20,6 +20,8 @@ const DISABLED_IDS = {
   d: ["a", "f"],
   E: ["b", "c"],
   F: ["b", "c", "d"],
+  _: ["a", "b", "c", "e", "f", "g"],
+  "-": ["a", "b", "c", "e", "d", "f"],
 };
 </script>
 
@@ -42,14 +44,14 @@ const DISABLED_IDS = {
   padding: 2em;
   background: #000;
   display: grid;
-  gap: 5px;
+  gap: 0.2em;
   align-items: center;
   justify-content: center;
 
   grid-template-areas:
-    "a a a"
+    "f a b"
     "f g b"
     "e g c"
-    "d d d";
+    "e d c";
 }
 </style>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
-
 const props = defineProps(["segment", "disabledIds"]);
 
 const visibility = (id: string) => {
@@ -8,13 +6,13 @@ const visibility = (id: string) => {
 };
 
 const styles = {
-  a: { width: "300px", height: "50px", visibility: visibility("a") },
-  b: { width: "50px", height: "180px", visibility: visibility("b") },
-  c: { width: "50px", height: "180px", visibility: visibility("c") },
-  d: { width: "300px", height: "50px", visibility: visibility("d") },
-  e: { width: "50px", height: "180px", visibility: visibility("e") },
-  f: { width: "50px", height: "180px", visibility: visibility("f") },
-  g: { width: "190px", height: "50px", visibility: visibility("g") },
+  a: { width: "12.5em", height: "2.5em", visibility: visibility("a") },
+  b: { width: "2.5em", height: "11.25em", visibility: visibility("b") },
+  c: { width: "2.5em", height: "11.25em", visibility: visibility("c") },
+  d: { width: "12.5em", height: "2.5em", visibility: visibility("d") },
+  e: { width: "2.5em", height: "11.25em", visibility: visibility("e") },
+  f: { width: "2.5em", height: "11.25em", visibility: visibility("f") },
+  g: { width: "100%", height: "2.5em", visibility: visibility("g") },
 } as Record<string, { width: string; height: string; visibility: "hidden" | "visible" }>;
 const style = styles[props.segment];
 </script>
@@ -39,6 +37,7 @@ const style = styles[props.segment];
   align-items: center;
   justify-content: center;
 
-  background-color: hsla(160, 100%, 37%, 1);
+  background-color: #ff0000;
+  color: black;
 }
 </style>
