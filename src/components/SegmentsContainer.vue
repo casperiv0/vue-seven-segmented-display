@@ -3,35 +3,35 @@ import { ref } from "vue";
 import SegmentItem from "./SegmentItem.vue";
 const SEGMENT_IDS = ref(["a", "f", "g", "b", "e", "g", "c", "d"]);
 
-const DISABLED_IDS = {
-  0: ["g"],
-  1: ["a", "f", "d", "e", "g"],
-  2: ["c", "f"],
-  3: ["e", "f"],
-  4: ["a", "d", "e"],
-  5: ["b", "e"],
-  6: ["b"],
-  7: ["d", "e", "f", "g"],
-  8: [],
-  9: ["e"],
-  A: ["d"],
-  b: ["a", "b"],
-  C: ["b", "c", "g"],
-  d: ["a", "f"],
-  E: ["b", "c"],
-  F: ["b", "c", "d"],
-  _: ["a", "b", "c", "e", "f", "g"],
-  "-": ["a", "b", "c", "e", "d", "f"],
+const LETTERS_ENABLED_SEGMENTS = {
+  0: ["a", "b", "c", "d", "e", "f"],
+  1: ["b", "c"],
+  2: ["a", "b", "g", "e", "d"],
+  3: ["a", "b", "c", "d", "g"],
+  4: ["b", "c", "g", "f"],
+  5: ["a", "c", "d", "f", "g"],
+  6: ["a", "c", "d", "e", "f", "g"],
+  7: ["a", "b", "c"],
+  8: ["a", "b", "c", "d", "e", "f", "g"],
+  9: ["a", "b", "c", "d", "f", "g"],
+  A: ["a", "b", "c", "e", "f", "g"],
+  b: ["c", "d", "e", "f", "g"],
+  C: ["a", "d", "e", "f"],
+  d: ["b", "c", "d", "e", "g"],
+  E: ["a", "d", "e", "f", "g"],
+  F: ["a", "e", "f", "g"],
+  _: ["d"],
+  "-": ["g"],
 };
 </script>
 
 <template>
-  <div :key="index" v-for="(id, index) of DISABLED_IDS">
+  <div :key="index" v-for="(enabledSegments, index) in LETTERS_ENABLED_SEGMENTS">
     <div class="segment-container">
       <SegmentItem
-        :disabledIds="DISABLED_IDS[index]"
-        :key="segment"
         v-for="segment of SEGMENT_IDS"
+        :enabledSegments="enabledSegments"
+        :key="segment"
         :segment="segment"
       />
     </div>

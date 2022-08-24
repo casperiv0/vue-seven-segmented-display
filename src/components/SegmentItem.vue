@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const props = defineProps(["segment", "disabledIds"]);
+import { store } from "@/store";
+
+const props = defineProps(["segment", "enabledSegments"]);
 
 const visibility = (id: string) => {
-  return props.disabledIds.includes(id) ? "hidden" : "visible";
+  return props.enabledSegments.includes(id) ? "visible" : "hidden";
 };
 
 const styles = {
@@ -18,16 +20,8 @@ const style = styles[props.segment];
 </script>
 
 <template>
-  <p
-    :style="{
-      gridArea: segment,
-      width: style.width,
-      height: style.height,
-      visibility: style.visibility,
-    }"
-    class="segment-item"
-  >
-    {{ segment }}
+  <p :style="{ gridArea: segment, ...style }" class="segment-item">
+    <span>{{ store.showSegmentIds ? segment : null }}</span>
   </p>
 </template>
 
@@ -39,5 +33,9 @@ const style = styles[props.segment];
 
   background-color: #ff0000;
   color: black;
+}
+
+.segment-item span {
+  font-size: 2em;
 }
 </style>
